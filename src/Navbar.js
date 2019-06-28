@@ -1,6 +1,5 @@
 import React from "react";
 import "./App.css";
-import Navbar from "./Navbar.js";
 
 // function App() {
 //   return (
@@ -10,15 +9,10 @@ import Navbar from "./Navbar.js";
 //   );
 // }
 
-class App extends React.Component {
+class Navbar extends React.Component {
   render() {
-    return (
-      <div>
-        Hello
-        <Navbar />
-      </div>
-    );
+    return <div>from navbar</div>;
   }
 }
 
-export default App;
+export default Navbar;
