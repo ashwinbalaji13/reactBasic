@@ -17,7 +17,9 @@ class Todo extends React.Component {
               }}
             >
               {todo.title}
-              <i>&times;</i>
+              <i style={{ float: "right" }} onClick={this.props.deleteNotes.bind(this, todo.id)}>
+                &times;
+              </i>
             </div>
           );
         })}

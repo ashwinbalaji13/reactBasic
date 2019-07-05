@@ -16,17 +16,22 @@ class App extends React.Component {
     todos: [
       {
         id: 1,
-        title: "Learn React",
+        title: "Wake up Early",
         completed: false
       },
       {
         id: 2,
-        title: "Update Skills",
+        title: "Do exercises",
         completed: false
       },
       {
         id: 3,
-        title: "Create awesome web apps",
+        title: "Have Breakfast",
+        completed: false
+      },
+      {
+        id: 4,
+        title: "Have a fun and productive day",
         completed: false
       }
     ]
@@ -41,13 +46,20 @@ class App extends React.Component {
     });
   };
 
+  deleteNotes = id => {
+    let notes = this.state.todos.filter(function(obj) {
+      return obj.id !== id;
+    });
+    this.setState({
+      todos: notes
+    });
+  };
   render() {
     return (
       <div>
         <Navbar title="Notes Maker" />
         <AddNotes addToNotes={this.addToNotes} />
-        <Todo todos={this.state.todos} />
-        {/* <Navbar todos={this.state.todos} /> */}
+        <Todo todos={this.state.todos} deleteNotes={this.deleteNotes} />
       </div>
     );
   }

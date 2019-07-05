@@ -7,8 +7,6 @@ let toolbarStyle = {
 };
 
 class Navbar extends React.Component {
-  // eslint-disable-next-line
-
   render() {
     return (
       <div style={toolbarStyle}>

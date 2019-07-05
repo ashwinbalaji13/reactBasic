@@ -42,12 +42,7 @@ class AddNotes extends React.Component {
   render() {
     return (
       <div>
-        <input
-          type="text"
-          style={inputBox}
-          value={this.state.title}
-          onChange={this.onChange}
-        />
+        <input type="text" style={inputBox} value={this.state.title} onChange={this.onChange} />
         <button style={buttonStyle} onClick={this.submitNotes}>
           Add
         </button>
