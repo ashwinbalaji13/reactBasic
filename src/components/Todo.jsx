@@ -15,6 +15,7 @@ class Todo extends React.Component {
                 width: "80%",
                 border: "2px solid black"
               }}
+              key={todo.id}
             >
               {todo.title}
               <i style={{ float: "right" }} onClick={this.props.deleteNotes.bind(this, todo.id)}>
