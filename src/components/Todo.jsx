@@ -1,8 +1,6 @@
 import React from "react";
 
 class Todo extends React.Component {
-  // eslint-disable-next-line
-
   render() {
     return (
       <div>
@@ -10,7 +8,7 @@ class Todo extends React.Component {
           return (
             <div
               style={{
-                backgroundColor: "green",
+                backgroundColor: "lightgreen",
                 margin: "1em",
                 width: "80%",
                 border: "2px solid black"

@@ -46,6 +46,11 @@ class App extends React.Component {
     this.props.fetchNotes();
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.addNote) {
+      this.props.posts.unshift(nextProps.addNote);
+    }
+  }
   addToNotes = notes => {
     this.state.todos.push(notes);
     console.log(notes, this.state.todos);
@@ -77,13 +82,14 @@ class App extends React.Component {
 
 App.propTypes = {
   fetchNotes: PropTypes.func.isRequired,
-  posts: PropTypes.array.isRequired
+  posts: PropTypes.array.isRequired,
+  addNote: PropTypes.object
 };
 
 const mapStateToProps = state => {
   console.log("state", state);
 
-  return { posts: state.posts.notes };
+  return { posts: state.posts.notes, addNote: state.posts.note };
 };
 
 export default connect(

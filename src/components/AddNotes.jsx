@@ -1,5 +1,9 @@
 import React from "react";
 
+import { addNotes } from "../actions/postActions";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+
 let inputBox = {
   width: "90%",
   padding: "0.2em",
@@ -30,7 +34,7 @@ class AddNotes extends React.Component {
   };
   submitNotes = () => {
     console.log(this.state.title);
-    this.props.addToNotes({
+    this.props.addNotes({
       id: Date.now(),
       title: this.state.title,
       completed: false
@@ -51,4 +55,18 @@ class AddNotes extends React.Component {
   }
 }
 
-export default AddNotes;
+AddNotes.propTypes = {
+  addNotes: PropTypes.func.isRequired
+};
+
+const mapStateToProps = state => {
+  console.log("state", state);
+
+  return { posts: state.posts.notes };
+};
+
+export default connect(
+  mapStateToProps,
+  { addNotes }
+)(AddNotes);
+// export default AddNotes;

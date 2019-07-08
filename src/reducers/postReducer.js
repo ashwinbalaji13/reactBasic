@@ -13,6 +13,11 @@ export default function(state = initialState, action) {
         ...state,
         notes: action.payload
       };
+    case ADD_NOTE:
+      return {
+        ...state,
+        note: action.payload
+      };
     default:
       return state;
   }

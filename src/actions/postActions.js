@@ -1,16 +1,6 @@
 import { FETCH_NOTES, ADD_NOTE } from "./types";
 
 export const fetchNotes = () => dispatch => {
-  //   fetch("https://jsonplaceholder.typicode.com/posts")
-  //     .then(res => res.json())
-  //     .then(posts => {
-  //       console.log("posts", posts);
-  //       return dispatch({
-  //         type: FETCH_POSTS,
-  //         payload: posts
-  //       });
-  //     });
-
   return dispatch({
     type: FETCH_NOTES,
     payload: [
@@ -36,4 +26,8 @@ export const fetchNotes = () => dispatch => {
       }
     ]
   });
+};
+
+export const addNotes = note => dispatch => {
+  return dispatch({ type: ADD_NOTE, payload: note });
 };
