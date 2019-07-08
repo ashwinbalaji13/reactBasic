@@ -3,6 +3,7 @@ import "./App.css";
 import Navbar from "./components/NavBar";
 import AddNotes from "./components/AddNotes";
 import Todo from "./components/Todo";
+import PropTypes from "prop-types";
 
 import { connect } from "react-redux";
 import { fetchNotes } from "./actions/postActions";
@@ -73,6 +74,11 @@ class App extends React.Component {
     );
   }
 }
+
+App.propTypes = {
+  fetchNotes: PropTypes.func.isRequired,
+  posts: PropTypes.array.isRequired
+};
 
 const mapStateToProps = state => {
   console.log("state", state);
