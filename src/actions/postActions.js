@@ -1,4 +1,4 @@
-import { FETCH_NOTES, ADD_NOTE } from "./types";
+import { FETCH_NOTES, ADD_NOTE, UPDATE_NOTE } from "./types";
 
 export const fetchNotes = () => dispatch => {
   return dispatch({
@@ -30,4 +30,12 @@ export const fetchNotes = () => dispatch => {
 
 export const addNotes = note => dispatch => {
   return dispatch({ type: ADD_NOTE, payload: note });
+};
+
+export const updateNotes = (notes, note) => dispatch => {
+  console.log("prop", notes, note);
+
+  notes.push(note);
+  note = {};
+  return dispatch({ type: UPDATE_NOTE, payload: notes, note });
 };

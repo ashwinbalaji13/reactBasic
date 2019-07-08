@@ -1,4 +1,4 @@
-import { FETCH_NOTES, ADD_NOTE } from "../actions/types";
+import { FETCH_NOTES, ADD_NOTE, UPDATE_NOTE } from "../actions/types";
 
 const initialState = {
   notes: [],
@@ -17,6 +17,12 @@ export default function(state = initialState, action) {
       return {
         ...state,
         note: action.payload
+      };
+    case UPDATE_NOTE:
+      return {
+        ...state,
+        notes: action.payload,
+        note: []
       };
     default:
       return state;

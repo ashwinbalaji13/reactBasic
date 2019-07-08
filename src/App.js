@@ -6,7 +6,7 @@ import Todo from "./components/Todo";
 import PropTypes from "prop-types";
 
 import { connect } from "react-redux";
-import { fetchNotes } from "./actions/postActions";
+import { fetchNotes, updateNotes } from "./actions/postActions";
 
 // function App() {
 //   return (
@@ -22,7 +22,7 @@ class App extends React.Component {
   //     {
   //       id: 1,
   //       title: "Wake up Early",
-  //       completed: false
+  //       completed: falsenextProps
   //     },
   //     {
   //       id: 2,
@@ -47,8 +47,12 @@ class App extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.addNote) {
-      this.props.posts.unshift(nextProps.addNote);
+    if (nextProps.addNote && Object.keys(nextProps.addNote).length > 0) {
+      // console.log("nextProps", Object.keys(nextProps.addNote).length > 0);
+      console.log("next", nextProps.posts);
+
+      this.props.updateNotes(nextProps.posts, nextProps.addNote);
+      // this.props.posts.push(nextProps.addNote);
     }
   }
   addToNotes = notes => {
@@ -83,7 +87,8 @@ class App extends React.Component {
 App.propTypes = {
   fetchNotes: PropTypes.func.isRequired,
   posts: PropTypes.array.isRequired,
-  addNote: PropTypes.object
+  addNote: PropTypes.object,
+  updateNotes: PropTypes.func
 };
 
 const mapStateToProps = state => {
@@ -94,6 +99,6 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { fetchNotes }
+  { fetchNotes, updateNotes }
 )(App);
 // export default App;
