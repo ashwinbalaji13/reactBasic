@@ -3,6 +3,10 @@ import "./App.css";
 import Navbar from "./components/NavBar";
 import AddNotes from "./components/AddNotes";
 import Todo from "./components/Todo";
+
+import { connect } from "react-redux";
+import { fetchNotes } from "./actions/postActions";
+
 // function App() {
 //   return (
 //     <div className="App">
@@ -12,30 +16,34 @@ import Todo from "./components/Todo";
 // }
 
 class App extends React.Component {
-  state = {
-    todos: [
-      {
-        id: 1,
-        title: "Wake up Early",
-        completed: false
-      },
-      {
-        id: 2,
-        title: "Do exercises",
-        completed: false
-      },
-      {
-        id: 3,
-        title: "Have Breakfast",
-        completed: false
-      },
-      {
-        id: 4,
-        title: "Have a fun and productive day",
-        completed: false
-      }
-    ]
-  };
+  // state = {
+  //   todos: [
+  //     {
+  //       id: 1,
+  //       title: "Wake up Early",
+  //       completed: false
+  //     },
+  //     {
+  //       id: 2,
+  //       title: "Do exercises",
+  //       completed: false
+  //     },
+  //     {
+  //       id: 3,
+  //       title: "Have Breakfast",
+  //       completed: false
+  //     },
+  //     {
+  //       id: 4,
+  //       title: "Have a fun and productive day",
+  //       completed: false
+  //     }
+  //   ]
+  // };
+
+  componentWillMount() {
+    this.props.fetchNotes();
+  }
 
   addToNotes = notes => {
     this.state.todos.push(notes);
@@ -55,14 +63,25 @@ class App extends React.Component {
     });
   };
   render() {
+    console.log("render", this.props);
     return (
       <div>
         <Navbar title="Notes Maker" />
         <AddNotes addToNotes={this.addToNotes} />
-        <Todo todos={this.state.todos} deleteNotes={this.deleteNotes} />
+        <Todo todos={this.props.posts} deleteNotes={this.deleteNotes} />
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  console.log("state", state);
+
+  return { posts: state.posts.notes };
+};
+
+export default connect(
+  mapStateToProps,
+  { fetchNotes }
+)(App);
+// export default App;
