@@ -1,5 +1,9 @@
 import React from "react";
 
+import { deleteNotes } from "../actions/postActions";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+
 class Todo extends React.Component {
   render() {
     return (
@@ -16,7 +20,10 @@ class Todo extends React.Component {
               key={todo.id}
             >
               {todo.title}
-              <i style={{ float: "right" }} onClick={this.props.deleteNotes.bind(this, todo.id)}>
+              <i
+                style={{ float: "right" }}
+                onClick={this.props.deleteNotes.bind(this, todo.id)}
+              >
                 &times;
               </i>
             </div>
@@ -27,4 +34,18 @@ class Todo extends React.Component {
   }
 }
 
-export default Todo;
+Todo.propTypes = {
+  deleteNotes: PropTypes.func.isRequired
+};
+
+const mapStateToProps = state => {
+  console.log("state", state);
+
+  return { posts: state.posts.notes };
+};
+
+export default connect(
+  mapStateToProps,
+  { deleteNotes }
+)(Todo);
+// export default Todo;

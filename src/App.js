@@ -6,7 +6,7 @@ import Todo from "./components/Todo";
 import PropTypes from "prop-types";
 
 import { connect } from "react-redux";
-import { fetchNotes, updateNotes } from "./actions/postActions";
+import { fetchNotes, updateNotes, deleteNotes } from "./actions/postActions";
 
 // function App() {
 //   return (

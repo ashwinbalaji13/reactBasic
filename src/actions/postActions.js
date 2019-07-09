@@ -33,9 +33,14 @@ export const addNotes = note => dispatch => {
 };
 
 export const updateNotes = (notes, note) => dispatch => {
-  console.log("prop", notes, note);
-
   notes.push(note);
   note = {};
   return dispatch({ type: UPDATE_NOTE, payload: notes, note });
+};
+
+export const deleteNotes = (notes, id) => dispatch => {
+  let updatedNotes = notes.filter(function(obj) {
+    return obj.id !== id;
+  });
+  return dispatch({ type: FETCH_NOTES, payload: updatedNotes });
 };
