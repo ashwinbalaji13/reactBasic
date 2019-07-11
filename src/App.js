@@ -73,11 +73,13 @@ class App extends React.Component {
     });
   };
   render() {
+    console.log("app render");
+
     return (
       <div>
         <Navbar title="Notes Maker" />
-        <AddNotes addToNotes={this.addToNotes} />
-        <Todo todos={this.props.posts} deleteNotes={this.deleteNotes} />
+        <AddNotes />
+        <Todo Notes={this.props.posts} />
       </div>
     );
   }

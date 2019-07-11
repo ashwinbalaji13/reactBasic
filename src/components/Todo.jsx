@@ -5,10 +5,19 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 class Todo extends React.Component {
+  // componentWillReceiveProps(nextProps) {
+  //   if (nextProps.posts && Object.keys(nextProps.addNote).length > 0) {
+  //     // console.log("nextProps", Object.keys(nextProps.addNote).length > 0);
+  //     console.log("next", nextProps.posts);
+
+  //     this.props.posts = nextProps.posts;
+  //     // this.props.posts.push(nextProps.addNote);
+  //   }
+  // }
   render() {
     return (
       <div>
-        {this.props.todos.map(todo => {
+        {this.props.Notes.map(todo => {
           return (
             <div
               style={{
