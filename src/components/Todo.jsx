@@ -1,23 +1,25 @@
 import React from "react";
 
-import { deleteNotes } from "../actions/postActions";
+import { deleteNotes, addNotes } from "../actions/postActions";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-
 class Todo extends React.Component {
-  // componentWillReceiveProps(nextProps) {
-  //   if (nextProps.posts && Object.keys(nextProps.addNote).length > 0) {
-  //     // console.log("nextProps", Object.keys(nextProps.addNote).length > 0);
-  //     console.log("next", nextProps.posts);
+  componentWillReceiveProps(nextProps) {
+    console.log("next todo", nextProps.posts);
 
-  //     this.props.posts = nextProps.posts;
-  //     // this.props.posts.push(nextProps.addNote);
-  //   }
-  // }
+    if (nextProps.posts && Object.keys(nextProps.posts).length > 0) {
+      // console.log("nextProps", Object.keys(nextProps.addNote).length > 0);
+      // console.log("next todo", nextProps.posts);
+
+      // this.props.posts = nextProps.posts;
+      this.forceUpdate();
+    }
+  }
+
   render() {
     return (
       <div>
-        {this.props.Notes.map(todo => {
+        {this.props.posts.map(todo => {
           return (
             <div
               style={{
@@ -41,18 +43,21 @@ class Todo extends React.Component {
 }
 
 Todo.propTypes = {
-  deleteNotes: PropTypes.func.isRequired,
-  posts: PropTypes.array.isRequired
+  deleteNotes: PropTypes.func,
+  addNotes: PropTypes.func,
+  posts: PropTypes.array.isRequired,
+  post: PropTypes.object
+  // updateNotes: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => {
-  console.log("state from todo", state);
+  console.log("state from todo", state.posts.notes);
 
   return { posts: state.posts.notes };
 };
 
 export default connect(
   mapStateToProps,
-  { deleteNotes }
+  { deleteNotes, addNotes }
 )(Todo);
 // export default Todo;

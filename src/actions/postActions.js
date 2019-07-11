@@ -1,4 +1,4 @@
-import { FETCH_NOTES, ADD_NOTE, UPDATE_NOTE } from "./types";
+import { FETCH_NOTES, ADD_NOTE } from "./types";
 
 export const fetchNotes = () => dispatch => {
   return dispatch({
@@ -29,14 +29,16 @@ export const fetchNotes = () => dispatch => {
 };
 
 export const addNotes = (notes, note) => dispatch => {
-  return dispatch({ type: ADD_NOTE, notes, payload: note });
-};
-
-export const updateNotes = (notes, note) => dispatch => {
   notes.push(note);
   note = {};
-  return dispatch({ type: UPDATE_NOTE, payload: notes, note });
+  return dispatch({ type: ADD_NOTE, notes, note });
 };
+
+// export const updateNotes = (notes, note) => dispatch => {
+//   // notes.push(note);
+//   // note = {};
+//   return dispatch({ type: UPDATE_NOTE, payload: notes, note: {} });
+// };
 
 export const deleteNotes = (notes, id) => dispatch => {
   let updatedNotes = notes.filter(function(obj) {

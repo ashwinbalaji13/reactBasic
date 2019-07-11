@@ -33,7 +33,6 @@ class AddNotes extends React.Component {
     });
   };
   submitNotes = () => {
-    console.log(this.state.title);
     this.props.addNotes(this.props.posts, {
       id: Date.now(),
       title: this.state.title,
@@ -44,6 +43,8 @@ class AddNotes extends React.Component {
     });
   };
   render() {
+    // console.log("inside addnotes render");
+
     return (
       <div>
         <input type="text" style={inputBox} value={this.state.title} onChange={this.onChange} />
