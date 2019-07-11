@@ -73,7 +73,6 @@ class App extends React.Component {
     });
   };
   render() {
-    console.log("render", this.props);
     return (
       <div>
         <Navbar title="Notes Maker" />
@@ -92,7 +91,7 @@ App.propTypes = {
 };
 
 const mapStateToProps = state => {
-  console.log("state", state);
+  console.log("state from app", state);
 
   return { posts: state.posts.notes, addNote: state.posts.note };
 };

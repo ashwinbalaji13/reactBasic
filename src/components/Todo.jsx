@@ -20,10 +20,7 @@ class Todo extends React.Component {
               key={todo.id}
             >
               {todo.title}
-              <i
-                style={{ float: "right" }}
-                onClick={this.props.deleteNotes.bind(this, todo.id)}
-              >
+              <i style={{ float: "right" }} onClick={this.props.deleteNotes.bind(this, this.props.posts, todo.id)}>
                 &times;
               </i>
             </div>
@@ -35,11 +32,12 @@ class Todo extends React.Component {
 }
 
 Todo.propTypes = {
-  deleteNotes: PropTypes.func.isRequired
+  deleteNotes: PropTypes.func.isRequired,
+  posts: PropTypes.array.isRequired
 };
 
 const mapStateToProps = state => {
-  console.log("state", state);
+  console.log("state from todo", state);
 
   return { posts: state.posts.notes };
 };

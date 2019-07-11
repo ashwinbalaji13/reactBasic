@@ -28,8 +28,8 @@ export const fetchNotes = () => dispatch => {
   });
 };
 
-export const addNotes = note => dispatch => {
-  return dispatch({ type: ADD_NOTE, payload: note });
+export const addNotes = (notes, note) => dispatch => {
+  return dispatch({ type: ADD_NOTE, notes, payload: note });
 };
 
 export const updateNotes = (notes, note) => dispatch => {

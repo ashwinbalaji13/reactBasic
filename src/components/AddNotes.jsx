@@ -34,7 +34,7 @@ class AddNotes extends React.Component {
   };
   submitNotes = () => {
     console.log(this.state.title);
-    this.props.addNotes({
+    this.props.addNotes(this.props.posts, {
       id: Date.now(),
       title: this.state.title,
       completed: false
@@ -60,7 +60,7 @@ AddNotes.propTypes = {
 };
 
 const mapStateToProps = state => {
-  console.log("state", state);
+  console.log("state from addnotes", state);
 
   return { posts: state.posts.notes };
 };

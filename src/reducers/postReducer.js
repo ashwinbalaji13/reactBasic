@@ -16,13 +16,14 @@ export default function(state = initialState, action) {
     case ADD_NOTE:
       return {
         ...state,
+        notes: action.notes,
         note: action.payload
       };
     case UPDATE_NOTE:
       return {
         ...state,
         notes: action.payload,
-        note: []
+        note: {}
       };
     default:
       return state;
