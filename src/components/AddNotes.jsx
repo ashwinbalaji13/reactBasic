@@ -33,7 +33,6 @@ class AddNotes extends React.Component {
     });
   };
   submitNotes = () => {
-    console.log(this.state.title);
     this.props.addNotes({
       id: Date.now(),
       title: this.state.title,
@@ -60,8 +59,6 @@ AddNotes.propTypes = {
 };
 
 const mapStateToProps = state => {
-  console.log("state", state);
-
   return { posts: state.posts.notes };
 };
 

@@ -8,7 +8,7 @@ const initialState = {
 export default function(state = initialState, action) {
   switch (action.type) {
     case FETCH_NOTES:
-      console.log("reducer", action);
+      console.log("fetch notes reducer", action);
       return {
         ...state,
         notes: action.payload
@@ -16,6 +16,7 @@ export default function(state = initialState, action) {
     case ADD_NOTE:
       return {
         ...state,
+        notes: [...state.notes, action.payload],
         note: action.payload
       };
     case UPDATE_NOTE:

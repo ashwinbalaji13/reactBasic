@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 
 class Todo extends React.Component {
   render() {
+    console.log('props:',this.props);
     return (
       <div>
         {this.props.todos.map(todo => {
@@ -22,7 +23,7 @@ class Todo extends React.Component {
               {todo.title}
               <i
                 style={{ float: "right" }}
-                onClick={this.props.deleteNotes.bind(this, todo.id)}
+                // onClick={this.props.deleteNotes.bind(this, todo.id)}
               >
                 &times;
               </i>
@@ -34,14 +35,12 @@ class Todo extends React.Component {
   }
 }
 
-Todo.propTypes = {
-  deleteNotes: PropTypes.func.isRequired
-};
+// Todo.propTypes = {
+//   deleteNotes: PropTypes.func.isRequired
+// };
 
 const mapStateToProps = state => {
-  console.log("state", state);
-
-  return { posts: state.posts.notes };
+  return { todos: state.posts.notes };
 };
 
 export default connect(
