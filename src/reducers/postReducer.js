@@ -19,12 +19,12 @@ export default function(state = initialState, action) {
         notes: [...state.notes, action.payload],
         note: action.payload
       };
-    case UPDATE_NOTE:
-      return {
-        ...state,
-        notes: action.payload,
-        note: []
-      };
+    // case UPDATE_NOTE:
+    //   return {
+    //     ...state,
+    //     notes: action.payload,
+    //     note: []
+    //   };
     default:
       return state;
   }

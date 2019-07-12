@@ -6,10 +6,9 @@ import Todo from "./components/Todo";
 import PropTypes from "prop-types";
 
 import { connect } from "react-redux";
-import { fetchNotes, updateNotes } from "./actions/postActions";
+import { fetchNotes } from "./actions/postActions";
 
 class App extends React.Component {
-
   componentWillMount() {
     this.props.fetchNotes();
   }
@@ -42,8 +41,8 @@ class App extends React.Component {
     return (
       <div>
         <Navbar title="Notes Maker" />
-        <AddNotes/>
-        <Todo/>
+        <AddNotes />
+        <Todo />
       </div>
     );
   }
@@ -61,5 +60,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { fetchNotes, updateNotes }
+  { fetchNotes }
 )(App);

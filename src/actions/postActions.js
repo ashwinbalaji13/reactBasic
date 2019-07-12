@@ -29,23 +29,22 @@ export const fetchNotes = () => dispatch => {
 };
 
 export const addNotes = note => dispatch => {
-  console.log('addNote:',note);
+  console.log("addNote:", note);
   return dispatch({ type: ADD_NOTE, payload: note });
 };
 
-export const updateNotes = (notes, note) => dispatch => {
-  notes.push(note);
-  note = {};
-  return dispatch({ type: UPDATE_NOTE, payload: notes, note });
-};
+// export const updateNotes = (notes, note) => dispatch => {
+//   notes.push(note);
+//   note = {};
+//   return dispatch({ type: UPDATE_NOTE, payload: notes, note });
+// };
 
-export const deleteNotes = (notes, id) => {
-  return (dispatch,store) => {
-
-  console.log('notes:',notes, store.getState())
+export const deleteNotes = (notes, id) => dispatch => {
+  // return (dispatch, store) => {
+  // console.log('notes:',notes, store.getState())
   let updatedNotes = notes.filter(function(obj) {
     return obj.id !== id;
   });
   return dispatch({ type: FETCH_NOTES, payload: updatedNotes });
-  }
+  // };
 };
