@@ -1,37 +1,15 @@
-import { FETCH_NOTES, ADD_NOTE } from "./types";
+import { FETCH_NOTES, ADD_NOTE, DELETE_NOTE } from "./types";
 
 export const fetchNotes = () => dispatch => {
   return dispatch({
-    type: FETCH_NOTES,
-    payload: [
-      {
-        id: 1,
-        title: "Wake up Early",
-        completed: false
-      },
-      {
-        id: 2,
-        title: "Do exercises",
-        completed: false
-      },
-      {
-        id: 3,
-        title: "Have Breakfast",
-        completed: false
-      },
-      {
-        id: 4,
-        title: "Have a fun and productive day",
-        completed: false
-      }
-    ]
+    type: FETCH_NOTES
   });
 };
 
 export const addNotes = (notes, note) => dispatch => {
-  notes.push(note);
-  note = {};
-  return dispatch({ type: ADD_NOTE, notes, note });
+  let payload = [...notes] 
+  payload.push(note)
+  return dispatch({ type: ADD_NOTE, payload });
 };
 
 // export const updateNotes = (notes, note) => dispatch => {
@@ -44,5 +22,5 @@ export const deleteNotes = (notes, id) => dispatch => {
   let updatedNotes = notes.filter(function(obj) {
     return obj.id !== id;
   });
-  return dispatch({ type: FETCH_NOTES, payload: updatedNotes });
+  return dispatch({ type: DELETE_NOTE, payload: updatedNotes });
 };

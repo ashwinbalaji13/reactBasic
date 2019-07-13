@@ -43,8 +43,6 @@ class AddNotes extends React.Component {
     });
   };
   render() {
-    // console.log("inside addnotes render");
-
     return (
       <div>
         <input type="text" style={inputBox} value={this.state.title} onChange={this.onChange} />
@@ -70,4 +68,3 @@ export default connect(
   mapStateToProps,
   { addNotes }
 )(AddNotes);
-// export default AddNotes;
