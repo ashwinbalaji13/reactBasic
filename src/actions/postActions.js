@@ -29,8 +29,10 @@ export const fetchNotes = () => dispatch => {
 };
 
 export const addNotes = (notes, note) => dispatch => {
-  notes.push(note);
-  note = {};
+  // notes.push(note);
+  // console.log("notes", notes);
+
+  // note = {};
   return dispatch({ type: ADD_NOTE, notes, note });
 };
 

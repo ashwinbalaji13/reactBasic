@@ -6,6 +6,8 @@ const initialState = {
 };
 
 export default function(state = initialState, action) {
+  console.log("reducer", state);
+
   switch (action.type) {
     case FETCH_NOTES:
       return {
@@ -16,8 +18,8 @@ export default function(state = initialState, action) {
     case ADD_NOTE:
       return {
         ...state,
-        notes: action.notes,
-        note: action.note
+        notes: [...state.notes, action.note],
+        note: {}
       };
     // case UPDATE_NOTE:
     //   return {

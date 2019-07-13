@@ -31,7 +31,14 @@ class Todo extends React.Component {
               key={todo.id}
             >
               {todo.title}
-              <i style={{ float: "right" }} onClick={this.props.deleteNotes.bind(this, this.props.posts, todo.id)}>
+              <i
+                style={{ float: "right" }}
+                onClick={this.props.deleteNotes.bind(
+                  this,
+                  this.props.posts,
+                  todo.id
+                )}
+              >
                 &times;
               </i>
             </div>
