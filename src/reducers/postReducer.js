@@ -27,6 +27,8 @@ const initialState = {
 };
 
 export default function(state = initialState, action) {
+  console.log("reducer", state);
+
   switch (action.type) {
     case FETCH_NOTES:
       return state
